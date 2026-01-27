@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bdd6rjyv5uhxi"]
+
+[ext_resource type="Script" uid="uid://dtxwyvjriiynr" path="res://titlescreen/quit_game.gd" id="1_gmc7t"]
+[ext_resource type="Script" uid="uid://dgsfk2d5wcdoe" path="res://titlescreen/title_screen.gd" id="1_y0dik"]
+[ext_resource type="Script" uid="uid://csky2jo28g8wh" path="res://titlescreen/start_button.gd" id="1_y1mc1"]
+
+[sub_resource type="Theme" id="Theme_gmc7t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gmc7t"]
+font_size = 41
+font_color = Color(0.45626235, 0.99999994, 0.80432546, 1)
+
+[node name="TitleScreen" type="Control" unique_id=923064187]
+layout_mode = 3
+offset_left = 192.0
+offset_top = 128.0
+offset_right = 1408.0
+offset_bottom = 768.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y0dik")
+
+[node name="QuitGame" type="Button" parent="." unique_id=1657598326]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 415.0
+offset_right = 736.0
+offset_bottom = 497.0
+theme = SubResource("Theme_gmc7t")
+text = "Quit Game"
+script = ExtResource("1_gmc7t")
+
+[node name="StartButton" type="Button" parent="." unique_id=1156403045]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 295.0
+offset_right = 736.0
+offset_bottom = 377.0
+theme = SubResource("Theme_gmc7t")
+text = "Start Game"
+script = ExtResource("1_y1mc1")
+
+[node name="GameTitle" type="Label" parent="." unique_id=1355015294]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 176.0
+offset_right = 751.0
+offset_bottom = 282.0
+text = "Game Title Here"
+label_settings = SubResource("LabelSettings_gmc7t")
+
+[connection signal="pressed" from="QuitGame" to="QuitGame" method="_on_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]

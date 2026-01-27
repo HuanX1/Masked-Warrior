@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bi873v3cpv3gj"]
+
+[ext_resource type="Script" uid="uid://bpdb7fx4hy6wh" path="res://storyscreen/story_screen.gd" id="1_u4e3a"]
+[ext_resource type="Script" uid="uid://b22t1e5p2fnnd" path="res://storyscreen/story_outline.gd" id="2_u4e3a"]
+
+[node name="StoryScreen" type="Control" unique_id=917679526]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u4e3a")
+
+[node name="StoryOutline" type="RichTextLabel" parent="." unique_id=1076925289]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 194.0
+offset_right = 1460.0
+offset_bottom = 453.0
+bbcode_enabled = true
+text = "[font_size=32][center]You are the Knight of the Herbonia Realm.
+
+[font_size=24]Your princess has been abducted by the LIME - [i]Lords of Time.[/i] The King has appointed [b]you[/b] to save her from their clutches.
+
+Your journey starts here.[/font_size][/center]"
+script = ExtResource("2_u4e3a")
+
+[node name="ContinueButton" type="Button" parent="." unique_id=1021218472]
+layout_mode = 0
+offset_left = 678.0
+offset_top = 485.0
+offset_right = 920.0
+offset_bottom = 535.0
+text = "Continue"
