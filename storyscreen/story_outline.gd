@@ -17,6 +17,10 @@ func _ready():
 
 func type_text() -> void:
 	for i in full_text.length():
+		if full_text[i] == "[":
+			time_delay = 0
+		elif full_text[i] == "]":
+			time_delay = 0.04
 		text += full_text[i]
 		await get_tree().create_timer(time_delay).timeout
 	continue_button.visible = true

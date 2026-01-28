@@ -38,3 +38,6 @@ offset_right = 920.0
 offset_bottom = 535.0
 theme_override_fonts/font = ExtResource("2_h7se3")
 text = "Continue"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="toggled" from="ContinueButton" to="." method="_on_continue_button_toggled"]

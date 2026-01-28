@@ -47,9 +47,9 @@ text = "Start Game"
 layout_mode = 0
 offset_left = 320.0
 offset_top = 176.0
-offset_right = 874.0
+offset_right = 873.0
 offset_bottom = 282.0
-text = "Game Title Here"
+text = "Masked Warrior"
 label_settings = SubResource("LabelSettings_gmc7t")
 
 [connection signal="pressed" from="QuitGame" to="QuitGame" method="_on_pressed"]
