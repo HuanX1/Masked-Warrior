@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://d04plpkl12vdh"]
+
+[ext_resource type="Script" uid="uid://cd2i0vci13fmu" path="res://enemies/enemy.gd" id="1_7frlh"]
+[ext_resource type="Texture2D" uid="uid://bkyo8ygperhec" path="res://enemies/slime_green1.png" id="2_orwns"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7frlh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orwns"]
+size = Vector2(3.8409336, 1.9827118)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orwns"]
+atlas = ExtResource("2_orwns")
+region = Rect2(64, 67, 64, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6vjd"]
+atlas = ExtResource("2_orwns")
+region = Rect2(128, 67, 64, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07tka"]
+atlas = ExtResource("2_orwns")
+region = Rect2(0, 130, 64, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3t1x0"]
+atlas = ExtResource("2_orwns")
+region = Rect2(64, 130, 64, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7frlh"]
+atlas = ExtResource("2_orwns")
+region = Rect2(128, 130, 64, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epsnb"]
+atlas = ExtResource("2_orwns")
+region = Rect2(0, 193, 64, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w5fm"]
+atlas = ExtResource("2_orwns")
+region = Rect2(64, 193, 64, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uba7a"]
+atlas = ExtResource("2_orwns")
+region = Rect2(128, 193, 64, 63)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cjbay"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orwns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6vjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07tka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3t1x0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7frlh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epsnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4w5fm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uba7a")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fw1ev"]
+size = Vector2(44.949615, 44.784645)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=2142829104 groups=["enemy"]]
+position = Vector2(-38, 30)
+scale = Vector2(1.0011209, 0.9670105)
+script = ExtResource("1_7frlh")
+
+[node name="visual" type="Node2D" parent="." unique_id=1178020167]
+
+[node name="attackNode" type="Node2D" parent="visual" unique_id=1983779124]
+
+[node name="hitboxcaster" type="ShapeCast2D" parent="visual/attackNode" unique_id=1058853770]
+position = Vector2(41.952972, -6.2046895)
+scale = Vector2(1.0882638, 1.7853814)
+shape = SubResource("RectangleShape2D_7frlh")
+target_position = Vector2(32.125317, 0)
+
+[node name="hitboxcaster2" type="ShapeCast2D" parent="visual/attackNode" unique_id=440159301]
+position = Vector2(-32.96305, -6.2046895)
+rotation = 0.032182466
+scale = Vector2(0.6101795, 1.7851821)
+skew = -0.022069216
+shape = SubResource("RectangleShape2D_7frlh")
+target_position = Vector2(-83.50445, 0.91843987)
+
+[node name="RayCastRight" type="RayCast2D" parent="visual" unique_id=65758979]
+target_position = Vector2(36.958572, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="visual" unique_id=2122704271]
+target_position = Vector2(-44.949615, 0)
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=812742179]
+position = Vector2(-2.4972115, -1.551157)
+scale = Vector2(16.904024, 27.643011)
+shape = SubResource("RectangleShape2D_orwns")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1650097746]
+position = Vector2(-0.9988804, -16.54584)
+scale = Vector2(1.1598483, 1.3089901)
+sprite_frames = SubResource("SpriteFrames_cjbay")
+animation = &"hurt"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=368990928]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=803395543]
+position = Vector2(-9.23872e-07, -1.0341157)
+shape = SubResource("RectangleShape2D_fw1ev")

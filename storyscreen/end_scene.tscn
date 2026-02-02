@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://xynv8s6m0g3o"]
+
+[ext_resource type="FontFile" uid="uid://bgeibtpvalyo" path="res://font/PixelOperator8.ttf" id="2_i84dn"]
+[ext_resource type="Script" uid="uid://d104ame4l7ujm" path="res://storyscreen/end_story.gd" id="3_baef2"]
+[ext_resource type="FontFile" uid="uid://c7wsfb1txnhjp" path="res://font/PixelOperator8-Bold.ttf" id="3_urapj"]
+[ext_resource type="Script" uid="uid://170c84cpp00t" path="res://storyscreen/end_button.gd" id="4_baef2"]
+[ext_resource type="AudioStream" uid="uid://cmwcidjyoy1br" path="res://music/8-bitMaleVoice.wav" id="4_i84dn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i84dn"]
+font = ExtResource("2_i84dn")
+font_size = 155
+
+[node name="EndScene" type="Control" unique_id=1901760311]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EndStory" type="RichTextLabel" parent="." unique_id=951648581]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 215.0
+offset_right = 1461.0
+offset_bottom = 474.0
+theme_override_fonts/normal_font = ExtResource("2_i84dn")
+theme_override_fonts/bold_font = ExtResource("3_urapj")
+bbcode_enabled = true
+text = "[font_size=32][center]"
+script = ExtResource("3_baef2")
+
+[node name="NarrationVoice" type="AudioStreamPlayer2D" parent="EndStory" unique_id=692160541]
+position = Vector2(0, 33)
+stream = ExtResource("4_i84dn")
+
+[node name="EndButton" type="Button" parent="." unique_id=1406818464]
+layout_mode = 0
+offset_left = 680.0
+offset_top = 534.0
+offset_right = 922.0
+offset_bottom = 584.0
+theme_override_fonts/font = ExtResource("2_i84dn")
+text = "End Game"
+script = ExtResource("4_baef2")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1336853520]
+z_index = -1
+layout_mode = 0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 1859.0
+offset_bottom = 1527.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=713469453]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -485.0
+offset_top = -374.0
+offset_right = 503.0
+offset_bottom = -218.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU DIED"
+label_settings = SubResource("LabelSettings_i84dn")
+
+[connection signal="pressed" from="EndButton" to="EndButton" method="_on_pressed"]
