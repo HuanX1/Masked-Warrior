@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bi873v3cpv3gj"]
+
+[ext_resource type="Script" uid="uid://bpdb7fx4hy6wh" path="res://storyscreen/story_screen.gd" id="1_u4e3a"]
+[ext_resource type="FontFile" uid="uid://bgeibtpvalyo" path="res://font/PixelOperator8.ttf" id="2_h7se3"]
+[ext_resource type="FontFile" uid="uid://c7wsfb1txnhjp" path="res://font/PixelOperator8-Bold.ttf" id="2_jl8yc"]
+[ext_resource type="Script" uid="uid://b22t1e5p2fnnd" path="res://storyscreen/story_outline.gd" id="2_u4e3a"]
+[ext_resource type="Texture2D" uid="uid://engwdjp5ef7g" path="res://titlescreen/New_Piskel1.png" id="5_cjn38"]
+[ext_resource type="AudioStream" uid="uid://cmwcidjyoy1br" path="res://music/8-bitMaleVoice.wav" id="6_66xkl"]
+[ext_resource type="Script" uid="uid://bgwhkm7lmss88" path="res://storyscreen/continue_button.gd" id="6_t4ino"]
+
+[node name="StoryScreen" type="Control" unique_id=917679526]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u4e3a")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=263028749]
+z_index = -1
+layout_mode = 0
+offset_right = 1593.0
+offset_bottom = 902.0
+texture = ExtResource("5_cjn38")
+expand_mode = 2
+
+[node name="StoryOutline" type="RichTextLabel" parent="." unique_id=1076925289]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 194.0
+offset_right = 1460.0
+offset_bottom = 453.0
+theme_override_fonts/normal_font = ExtResource("2_h7se3")
+theme_override_fonts/bold_font = ExtResource("2_jl8yc")
+bbcode_enabled = true
+text = "[font_size=32][center]You are the Knight of the Herbonia Realm.
+
+[font_size=24]Your princess has been abducted by the LIME - Lords of Time. The King has appointed you to save her from their clutches.
+
+Your journey starts here.[/font_size][/center]"
+script = ExtResource("2_u4e3a")
+
+[node name="NarrationVoice" type="AudioStreamPlayer2D" parent="StoryOutline" unique_id=1375068313]
+stream = ExtResource("6_66xkl")
+
+[node name="ContinueButton" type="Button" parent="." unique_id=1021218472]
+layout_mode = 0
+offset_left = 678.0
+offset_top = 485.0
+offset_right = 920.0
+offset_bottom = 535.0
+theme_override_fonts/font = ExtResource("2_h7se3")
+text = "Continue"
+script = ExtResource("6_t4ino")
+
+[connection signal="pressed" from="ContinueButton" to="ContinueButton" method="_on_continue_button_pressed"]
+[connection signal="toggled" from="ContinueButton" to="." method="_on_continue_button_toggled"]

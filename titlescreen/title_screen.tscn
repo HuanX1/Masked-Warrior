@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bdd6rjyv5uhxi"]
+
+[ext_resource type="Script" uid="uid://dtxwyvjriiynr" path="res://titlescreen/quit_game.gd" id="1_gmc7t"]
+[ext_resource type="Script" uid="uid://dgsfk2d5wcdoe" path="res://titlescreen/title_screen.gd" id="1_y0dik"]
+[ext_resource type="FontFile" uid="uid://bgeibtpvalyo" path="res://font/PixelOperator8.ttf" id="2_fl2fr"]
+[ext_resource type="Texture2D" uid="uid://engwdjp5ef7g" path="res://titlescreen/New_Piskel1.png" id="5_fl2fr"]
+[ext_resource type="FontFile" uid="uid://c7wsfb1txnhjp" path="res://font/PixelOperator8-Bold.ttf" id="5_g0d6v"]
+
+[sub_resource type="Theme" id="Theme_gmc7t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gmc7t"]
+font = ExtResource("5_g0d6v")
+font_size = 41
+font_color = Color(0.26657522, 0.2665752, 0.2665752, 1)
+
+[node name="TitleScreen" type="Control" unique_id=923064187]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 1595.0
+offset_bottom = 903.0
+script = ExtResource("1_y0dik")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=605770561]
+z_index = -2
+z_as_relative = false
+layout_mode = 0
+offset_right = 1595.0
+offset_bottom = 900.0
+texture = ExtResource("5_fl2fr")
+expand_mode = 2
+
+[node name="QuitGame" type="Button" parent="." unique_id=1657598326]
+layout_mode = 0
+offset_left = 655.0
+offset_top = 520.0
+offset_right = 942.0
+offset_bottom = 602.0
+theme = SubResource("Theme_gmc7t")
+theme_override_fonts/font = ExtResource("2_fl2fr")
+text = "Quit Game"
+script = ExtResource("1_gmc7t")
+
+[node name="StartButton" type="Button" parent="." unique_id=1156403045]
+layout_mode = 0
+offset_left = 655.0
+offset_top = 400.0
+offset_right = 942.0
+offset_bottom = 482.0
+theme = SubResource("Theme_gmc7t")
+theme_override_fonts/font = ExtResource("2_fl2fr")
+text = "Start Game"
+
+[node name="GameTitle" type="Label" parent="." unique_id=1355015294]
+layout_mode = 0
+offset_left = 526.0
+offset_top = 281.0
+offset_right = 1079.0
+offset_bottom = 387.0
+text = "Masked Warrior"
+label_settings = SubResource("LabelSettings_gmc7t")
+
+[connection signal="pressed" from="QuitGame" to="QuitGame" method="_on_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]

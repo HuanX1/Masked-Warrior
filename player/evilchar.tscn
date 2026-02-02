@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://tfgu0eq656bu"]
+
+[ext_resource type="Script" uid="uid://dewlvyvv3g7tf" path="res://player/movement.gd" id="1_0cxbw"]
+[ext_resource type="Script" uid="uid://1nb8ymvhe2gt" path="res://player/attack.gd" id="2_ua1tm"]
+[ext_resource type="PackedScene" uid="uid://dusnma022nwol" path="res://player/evil_knight.tscn" id="3_ejoa8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0hol4"]
+radius = 34.0
+height = 102.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_epypp"]
+radius = 45.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=108098465 groups=["player"]]
+script = ExtResource("1_0cxbw")
+speed = 600
+jump_speed = 1500
+friction = 7000
+acceleration = 7000
+jumpCutVal = 400
+
+[node name="mainHitbox" type="CollisionShape2D" parent="." unique_id=227326960]
+position = Vector2(0, 9)
+shape = SubResource("CapsuleShape2D_0hol4")
+
+[node name="visuals" type="Node2D" parent="." unique_id=1939095033]
+
+[node name="attackNode" type="Node2D" parent="visuals" unique_id=2062246092]
+position = Vector2(79, -1)
+script = ExtResource("2_ua1tm")
+
+[node name="hitboxCast" type="ShapeCast2D" parent="visuals/attackNode" unique_id=1279597332]
+shape = SubResource("CircleShape2D_epypp")
+target_position = Vector2(84, 0)
+
+[node name="AnimatedSprite2D" parent="visuals" unique_id=714920332 instance=ExtResource("3_ejoa8")]
+position = Vector2(-1, 3)
+
+[connection signal="finishAttack" from="visuals/attackNode" to="." method="_on_attack_node_finish_attack"]
+[connection signal="startAttack" from="visuals/attackNode" to="." method="_on_attack_node_start_attack"]

@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://1wu3oriddujn"]
+
+[ext_resource type="Script" uid="uid://bvgea3sto7ax3" path="res://princess/princess.gd" id="1_e3qmk"]
+[ext_resource type="Texture2D" uid="uid://dbmaodt6c17vv" path="res://princess/Princess.png" id="1_hcrrn"]
+[ext_resource type="Script" uid="uid://chfwklr0audwf" path="res://princess/interaction.gd" id="2_e3qmk"]
+[ext_resource type="FontFile" uid="uid://bgeibtpvalyo" path="res://font/PixelOperator8.ttf" id="3_ov1to"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5siax"]
+atlas = ExtResource("1_hcrrn")
+region = Rect2(0, 16, 64, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5726c"]
+atlas = ExtResource("1_hcrrn")
+region = Rect2(0, 80, 64, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7usra"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5siax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5726c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcrrn"]
+size = Vector2(24.42857, 29.92857)
+
+[node name="Princess" type="Node2D" unique_id=1127537175]
+scale = Vector2(3.5, 3.5)
+
+[node name="Princess" type="CharacterBody2D" parent="." unique_id=1753625045]
+scale = Vector2(4, 4)
+script = ExtResource("1_e3qmk")
+
+[node name="PrincessAnim" type="AnimatedSprite2D" parent="Princess" unique_id=988200016]
+sprite_frames = SubResource("SpriteFrames_7usra")
+frame_progress = 0.15065904
+
+[node name="Interaction" type="Node2D" parent="Princess" unique_id=1037464548]
+script = ExtResource("2_e3qmk")
+
+[node name="RayCast2D" type="RayCast2D" parent="Princess/Interaction" unique_id=354604411]
+position = Vector2(3, 2)
+target_position = Vector2(-34.214283, -0.21428573)
+
+[node name="interactLabel" type="Label" parent="Princess/Interaction" unique_id=1068972511]
+visible = false
+offset_left = -33.0
+offset_top = -20.0
+offset_right = 37.0
+offset_bottom = 3.0
+scale = Vector2(1.0682122, 0.7716795)
+theme_override_fonts/font = ExtResource("3_ov1to")
+theme_override_font_sizes/font_size = 7
+text = "E to interact"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Princess" unique_id=710315042]
+position = Vector2(2.2142854, 4.9642844)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_hcrrn")
+
+[connection signal="popup_ready" from="Princess/Interaction" to="Princess/Interaction" method="_on_popup_ready"]
